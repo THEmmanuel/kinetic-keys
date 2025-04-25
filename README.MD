@@ -4,6 +4,8 @@ Kinetic Keys (KK) is a novel cryptographic framework that enables secure, privac
 
 This SDK includes a set of utilities for generating secure keys, encrypting/decrypting payloads, managing unlock hashes, and reconstructing content using granular poem-based key derivation.
 
+Whitepaper: https://emmanuels-organization-21.gitbook.io/kinetic/kinetic-keys-a-lightweight-zero-knowledge-framework-for-secure-digital-transactions#license
+
 ## ✨ Features
 - 🔑 Generate unique unlock hashes (single or dual mode)
 - 🔍 Verify unlock hashes

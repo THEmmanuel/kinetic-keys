@@ -1,0 +1,21 @@
+{
+  "name": "kinetic-keys",
+  "version": "1.0.0",
+  "description": "A Lightweight Zero-Knowledge Framework for Secure Digital Transactions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cryptography",
+    "kinetic-keys",
+    "encryption",
+    "security"
+  ],
+  "author": "Emmanuel Ayodele Bello",
+  "license": "SEE LICENSE IN README.MD",
+  "dependencies": {
+    "argon2": "^0.41.1",
+    "nanoid": "^5.1.5"
+  }
+}

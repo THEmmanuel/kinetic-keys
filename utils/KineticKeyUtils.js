@@ -70,7 +70,7 @@ function createVoucher(data, UH, SYSTEM_SECRET_KEY) {
 	return voucherCode;
 }
 
-async function decryptVoucher(voucherCode, passphrase, storedUH) {
+async function decryptVoucher(voucherCode, passphrase, storedUH, SYSTEM_SECRET_KEY) {
 	// Verify the passphrase with the stored unlock hash
 	const isVerified = await verifyUnlockHash(storedUH, passphrase);
 	if (!isVerified) {
@@ -81,7 +81,7 @@ async function decryptVoucher(voucherCode, passphrase, storedUH) {
 	const decodedData = JSON.parse(Buffer.from(voucherCode, "base64").toString("utf8"));
 
 	// Derive key from (UH + system secret key)
-	const derivedKey = deriveKey(storedUH);
+	const derivedKey = deriveKey(storedUH, SYSTEM_SECRET_KEY);
 
 	// Decrypt EK
 	const decryptedEK = decryptAESGCM(

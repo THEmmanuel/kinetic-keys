@@ -1,6 +1,6 @@
 {
-  "name": "kinetic-keys",
-  "version": "1.0.0",
+  "name": "@ayxdele/kinetic-keys",
+  "version": "1.0.2",
   "description": "A Lightweight Zero-Knowledge Framework for Secure Digital Transactions.",
   "main": "index.js",
   "scripts": {
@@ -17,5 +17,17 @@
   "dependencies": {
     "argon2": "^0.41.1",
     "nanoid": "^5.1.5"
-  }
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/THEmmanuel/kinetic-keys.git"
+  },
+  "bugs": {
+    "url": "https://github.com/THEmmanuel/kinetic-keys/issues"
+  },
+  "homepage": "https://github.com/THEmmanuel/kinetic-keys#readme"
 }

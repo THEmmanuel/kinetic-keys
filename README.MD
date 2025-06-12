@@ -1,5 +1,13 @@
 # Kinetic Keys SDK
 
+A Lightweight Zero-Knowledge Framework for Secure Digital Transactions.
+
+## Installation
+
+```bash
+npm install @ayxdele/kinetic-keys
+```
+
 Kinetic Keys (KK) is a novel cryptographic framework that enables secure, privacy-preserving digital transactions without exposing sensitive underlying data. Unlike traditional zero-knowledge proofs (ZKPs) that impose significant computational overhead, Kinetic Keys achieves comparable security guarantees through hierarchical key derivation, deterministic encryption, and structured hashing techniques. The system provides a deterministic yet tamper-resistant mechanism for issuing, transferring, and verifying digital assets with minimal computational requirements.
 
 This SDK includes a set of utilities for generating secure keys, encrypting/decrypting payloads, managing unlock hashes, and reconstructing content using granular poem-based key derivation.
@@ -9,7 +17,7 @@ Whitepaper: https://emmanuels-organization-21.gitbook.io/kinetic/kinetic-keys-a-
 ## ✨ Features
 - 🔑 Generate unique unlock hashes (single or dual mode)
 - 🔍 Verify unlock hashes
-- 🧬 Poem-matrix-based key generation and granular reconstruction
+- 🧬 Dynamic poem-matrix-based key generation and granular reconstruction
 - 📦 Create and decrypt Kinetic Key vouchers
 - 🆔 Generate unique IDs for users or sessions
 
@@ -74,13 +82,17 @@ console.log(dualData); // Original payload object
 
 ---
 
-## 📐 Key Derivation Using Poem Matrix
-The poem-matrix-based approach generates encryption keys by selecting randomized segments from a matrix of strings, enabling secure transmission of sensitive data with only a reconstruction blueprint.
+## 📐 Key Derivation Using Dynamic Poem Matrix
+The poem-matrix-based approach generates encryption keys by selecting randomized segments from a dynamically generated matrix of strings, enabling secure transmission of sensitive data with only a reconstruction blueprint.
 
-### Generate Poem Matrix
+### Generate Dynamic Poem Matrix
 ```js
+// Generate a default 16x10 matrix
 const poemMatrix = generatePoemMatrix();
-console.log(poemMatrix);
+
+// Or customize the size and length
+const customMatrix = generatePoemMatrix(20, 12); // 20 rows, 12 characters each
+console.log(customMatrix);
 // Example output:
 // ["I0RIIIhO", "zmTi04jX", "mLr$oS9T", "ZTHrgcUu", "#8tfPHkZ", ...]
 ```
@@ -95,6 +107,15 @@ const blueprint = await deriveBlueprintGranular("Secret text", key);
 ```js
 const original = await reconstructTextGranular(blueprint, key);
 console.log(original); // "Secret text"
+```
+
+### High-level Usage
+```js
+// Generate key and blueprint with dynamic matrix
+const { blueprint, indices, poemMatrix } = await generateKeyAndBlueprint("Secret text", keyId);
+
+// Later, reconstruct the text
+const reconstructedText = await reconstructText(blueprint, poemMatrix, indices, keyId);
 ```
 
 ---
@@ -116,7 +137,7 @@ Generates a unique alphanumeric ID of the specified length. Internally, it uses 
 
 ### Syntax
 ```js
-const { generateUniqueID } = require('@projekt-kinetic/kinetic-keys');
+const { generateUniqueID } = require('@ayxdele/kinetic-keys');
 
 const id = await generateUniqueID(length);
 ```
@@ -149,12 +170,162 @@ This makes the output suitable for high-entropy requirements in security-sensiti
 ## ❗ Environment
 Requires Node.js. Not available for browser-based use.
 
-
-
 Licensing: https://emmanuels-organization-21.gitbook.io/kinetic/kinetic-keys-a-lightweight-zero-knowledge-framework-for-secure-digital-transactions#license
-
-
-
 
 © 2025 Projekt Kinetic. All rights reserved.
 
+## 📝 Comprehensive Usage Guide
+
+Here's a complete example showing how to use all the major features of Kinetic Keys:
+
+```javascript
+const {
+    // Unique ID
+    generateUniqueID,
+
+    // Key Derivation
+    generatePoemMatrix,
+    generateKeyWithPoemMatrix,
+    reconstructTextGranular,
+    deriveBlueprintGranular,
+    generateKeyAndBlueprint,
+    reconstructText,
+
+    // Unlock Hash
+    generateUnlockHash,
+    verifyUnlockHash,
+
+    // Vouchers
+    createVoucher,
+    decryptVoucher
+} = require('@ayxdele/kinetic-keys');
+
+async function runTests() {
+    try {
+        console.log('🧪 Starting Kinetic Keys Comprehensive Test Suite\n');
+
+        // === Test 1: Unique ID Generation ===
+        console.log('📌 Test 1: Unique ID Generation');
+        const uniqueId = await generateUniqueID(8);
+        console.log('Generated Unique ID:', uniqueId);
+        console.log('✅ Test 1 Passed\n');
+
+        // === Test 2: Poem Matrix Generation ===
+        console.log('📌 Test 2: Poem Matrix Generation');
+        const poemMatrix = generatePoemMatrix();
+        console.log('Generated Poem Matrix:', poemMatrix);
+        console.log('✅ Test 2 Passed\n');
+
+        // === Test 3: Key Generation with Poem Matrix ===
+        console.log('📌 Test 3: Key Generation with Poem Matrix');
+        const { key, indices, keyId } = generateKeyWithPoemMatrix(poemMatrix);
+        console.log('Generated Key:', key.toString('hex'));
+        console.log('Generated Indices:', indices);
+        console.log('Generated Key ID:', keyId);
+        console.log('✅ Test 3 Passed\n');
+
+        // === Test 4: Blueprint Generation and Reconstruction ===
+        console.log('📌 Test 4: Blueprint Generation and Reconstruction');
+        const testText = "This is a secret message that needs to be encrypted! 🔐";
+        console.log('Original Text:', testText);
+
+        // Generate blueprint
+        const blueprint = await deriveBlueprintGranular(testText, key);
+        console.log('Generated Blueprint:', blueprint);
+
+        // Reconstruct text
+        const reconstructedText = await reconstructTextGranular(blueprint, key);
+        console.log('Reconstructed Text:', reconstructedText);
+        console.log('Test Passed:', testText === reconstructedText);
+        console.log('✅ Test 4 Passed\n');
+
+        // === Test 5: High-level Key and Blueprint Generation ===
+        console.log('📌 Test 5: High-level Key and Blueprint Generation');
+        const { blueprint: highLevelBlueprint, indices: highLevelIndices, poemMatrix: highLevelMatrix } = 
+            await generateKeyAndBlueprint(testText, uniqueId);
+        console.log('Generated High-level Blueprint:', highLevelBlueprint);
+        console.log('Generated High-level Indices:', highLevelIndices);
+        console.log('Generated High-level Matrix:', highLevelMatrix);
+        console.log('✅ Test 5 Passed\n');
+
+        // === Test 6: High-level Text Reconstruction ===
+        console.log('📌 Test 6: High-level Text Reconstruction');
+        const highLevelReconstructed = await reconstructText(
+            highLevelBlueprint,
+            highLevelMatrix,
+            highLevelIndices,
+            uniqueId
+        );
+        console.log('High-level Reconstructed Text:', highLevelReconstructed);
+        console.log('Test Passed:', testText === highLevelReconstructed);
+        console.log('✅ Test 6 Passed\n');
+
+        // === Test 7: Unlock Hash Generation and Verification ===
+        console.log('📌 Test 7: Unlock Hash Generation and Verification');
+        const unlockHash = await generateUnlockHash(testText);
+        console.log('Generated Unlock Hash:', unlockHash);
+        const isVerified = await verifyUnlockHash(unlockHash, testText);
+        console.log('Hash Verification Result:', isVerified);
+        console.log('✅ Test 7 Passed\n');
+
+        // === Test 8: Voucher Creation and Decryption ===
+        console.log('📌 Test 8: Voucher Creation and Decryption');
+        const SYSTEM_SECRET_KEY = "YourStaticSecretKeyHere"; // In production, use a secure key
+        const voucher = await createVoucher(testText, unlockHash, SYSTEM_SECRET_KEY);
+        console.log('Created Voucher:', voucher);
+        const decryptedVoucher = await decryptVoucher(voucher, testText, unlockHash, SYSTEM_SECRET_KEY);
+        console.log('Decrypted Voucher:', decryptedVoucher);
+        console.log('Test Passed:', testText === decryptedVoucher);
+        console.log('✅ Test 8 Passed\n');
+
+        // === Error Handling Tests ===
+        console.log('📌 Error Handling Tests');
+
+        // Test invalid blueprint
+        try {
+            await reconstructTextGranular('invalid-blueprint', key);
+            console.log('❌ Error handling test failed - should have thrown an error for invalid blueprint');
+        } catch (error) {
+            console.log('✅ Error handling test passed - caught invalid blueprint error');
+        }
+
+        // Test invalid unlock hash
+        try {
+            await verifyUnlockHash(testText, 'invalid-hash');
+            console.log('❌ Error handling test failed - should have thrown an error for invalid hash');
+        } catch (error) {
+            console.log('✅ Error handling test passed - caught invalid hash error');
+        }
+
+        // Test invalid voucher
+        try {
+            await decryptVoucher('invalid-voucher', testText, unlockHash, SYSTEM_SECRET_KEY);
+            console.log('❌ Error handling test failed - should have thrown an error for invalid voucher');
+        } catch (error) {
+            console.log('✅ Error handling test passed - caught invalid voucher error');
+        }
+
+        console.log('\n🎉 All tests completed successfully!');
+
+    } catch (error) {
+        console.error('❌ Test suite failed with error:', error);
+        console.error('Error stack:', error.stack);
+    }
+}
+
+// Run all tests
+runTests();
+```
+
+This comprehensive example demonstrates:
+- All major features of the SDK
+- Proper error handling
+- Integration between different components
+- Best practices for using the library
+
+To run this example:
+1. Save it as `test-kk.js`
+2. Install the package: `npm install @ayxdele/kinetic-keys`
+3. Run: `node test-kk.js`
+
+The output will show detailed information about each operation and verify that everything works correctly.

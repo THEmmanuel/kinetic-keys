@@ -45,14 +45,24 @@ function aesDecrypt(encrypted, secretKey, iv, tag) {
 }
 
 // ==== POEM MATRIX ====
-const POEM_MATRIX = [
-	"w4Zg@1#rT8", "p9Lm2%vXeQ", "z6Kb&0NcYh", "aR3Tu@q!Vs",
-	"Z9mLp2#XwK", "Bg7$Ye!mQs", "t@6Xo#vWrL", "nB3TzKp8!Q",
-	"UeX0@#Vm29", "jK%lMvR4@z", "WzY@1vX&Lo", "qT9mP0!NrZ",
-	"s@XnLp7VKe", "o0Lm@Pw2#r", "Nz8YT!oKm#", "xvR2Lp@WzQ"
-];
+function generatePoemMatrix(size = 16, length = 10) {
+	const matrix = [];
+	const chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+-=[]{}|;:,.<>?";
+	
+	for (let i = 0; i < size; i++) {
+		let row = "";
+		for (let j = 0; j < length; j++) {
+			const randomIndex = Math.floor(Math.random() * chars.length);
+			row += chars[randomIndex];
+		}
+		matrix.push(row);
+	}
+	
+	console.log("Generated Poem Matrix:", matrix);
+	return matrix;
+}
 
-function getRandomIndices(matrixLength = POEM_MATRIX.length, count = 8) {
+function getRandomIndices(matrixLength, count = 8) {
 	const indices = new Set();
 	while (indices.size < count) {
 		indices.add(Math.floor(Math.random() * matrixLength));
@@ -60,8 +70,11 @@ function getRandomIndices(matrixLength = POEM_MATRIX.length, count = 8) {
 	return Array.from(indices);
 }
 
-function generateKeyWithPoemMatrix(indices = getRandomIndices(), keyId = "TEST-KEY-ID") {
-	const key = generateKeyFromMatrix(indices, "", keyId);
+function generateKeyWithPoemMatrix(poemMatrix, indices = null, keyId = "TEST-KEY-ID") {
+	if (!indices) {
+		indices = getRandomIndices(poemMatrix.length);
+	}
+	const key = generateKeyFromMatrix(poemMatrix, indices, "", keyId);
 	return {
 		key,
 		indices,
@@ -69,13 +82,11 @@ function generateKeyWithPoemMatrix(indices = getRandomIndices(), keyId = "TEST-K
 	};
 }
 
-
-function generateKeyFromMatrix(indices, saltKey = "", keyId = "TEST-KEY-ID") {
-	const selected = indices.map((i) => POEM_MATRIX[i]);
+function generateKeyFromMatrix(poemMatrix, indices, saltKey = "", keyId = "TEST-KEY-ID") {
+	const selected = indices.map((i) => poemMatrix[i]);
 	const combined = selected.join("") + saltKey + keyId;
 	return crypto.createHash("sha256").update(combined).digest();
 }
-
 
 async function deriveKeyGranular(salt, keygenKey, assemblerSecret) {
 	const combinedSecret = Buffer.concat([keygenKey, assemblerSecret]);
@@ -129,19 +140,18 @@ async function reconstructTextGranular(blueprint, keygenKey) {
 	}
 }
 
-
-
 (async () => {
 	const sampleText = "Top secret: Null Wallet is alive. 🧬";
 	const keyId = "NULLWALLET-001";
+	const poemMatrix = generatePoemMatrix();
 
 	// Part 1: Generate
-	async function gen(text, keyId) {
+	async function gen(text, poemMatrix, keyId) {
 		console.log("\n🧪 gen: generating key and blueprint...");
 		const {
 			key,
 			indices
-		} = generateKeyWithPoemMatrix(undefined, keyId);
+		} = generateKeyWithPoemMatrix(poemMatrix, undefined, keyId);
 		console.log("gen: 🔐 Generated Key:", key.toString("hex"));
 		console.log("gen: 🧩 Indices Used:", indices);
 
@@ -154,14 +164,12 @@ async function reconstructTextGranular(blueprint, keygenKey) {
 		};
 	}
 
-
-
 	// Part 2: Receive
-	async function receive(blueprint, indices, keyId) {
+	async function receive(blueprint, poemMatrix, indices, keyId) {
 		console.log("\n📥 receive: reconstructing key and decoding text...");
 		const {
 			key: reconstructedKey
-		} = generateKeyWithPoemMatrix(indices, keyId);
+		} = generateKeyWithPoemMatrix(poemMatrix, indices, keyId);
 
 		const reconstructedText = await reconstructTextGranular(blueprint, reconstructedKey);
 		console.log("receive: 🧾 Reconstructed Text:\n", reconstructedText);
@@ -173,16 +181,15 @@ async function reconstructTextGranular(blueprint, keygenKey) {
 	const {
 		blueprint,
 		indices
-	} = await gen(sampleText, keyId);
-	const reconstructedText = await receive(blueprint, indices, keyId);
+	} = await gen(sampleText, poemMatrix, keyId);
+	const reconstructedText = await receive(blueprint, poemMatrix, indices, keyId);
 
 	console.log("\n✅ Test Passed:", sampleText === reconstructedText);
 })();
 
-
-
 module.exports = {
 	generateKeyWithPoemMatrix,
 	reconstructTextGranular,
-	deriveBlueprintGranular
+	deriveBlueprintGranular,
+	generatePoemMatrix
 };

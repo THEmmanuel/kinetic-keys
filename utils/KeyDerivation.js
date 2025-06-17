@@ -70,7 +70,7 @@ function getRandomIndices(matrixLength, count = 8) {
 	return Array.from(indices);
 }
 
-function generateKeyWithPoemMatrix(poemMatrix, indices = null, keyId = "TEST-KEY-ID") {
+function generateKeyWithPoemMatrix(poemMatrix, indices = null, keyId ) {
 	if (!indices) {
 		indices = getRandomIndices(poemMatrix.length);
 	}
@@ -82,7 +82,7 @@ function generateKeyWithPoemMatrix(poemMatrix, indices = null, keyId = "TEST-KEY
 	};
 }
 
-function generateKeyFromMatrix(poemMatrix, indices, saltKey = "", keyId = "TEST-KEY-ID") {
+function generateKeyFromMatrix(poemMatrix, indices, saltKey, keyId) {
 	const selected = indices.map((i) => poemMatrix[i]);
 	const combined = selected.join("") + saltKey + keyId;
 	return crypto.createHash("sha256").update(combined).digest();
@@ -140,13 +140,9 @@ async function reconstructTextGranular(blueprint, keygenKey) {
 	}
 }
 
-(async () => {
-	const sampleText = "Top secret: Null Wallet is alive. 🧬";
-	const keyId = "NULLWALLET-001";
-	const poemMatrix = generatePoemMatrix();
 
 	// Part 1: Generate
-	async function gen(text, poemMatrix, keyId) {
+async function gen(text, poemMatrix, keyId) {
 		console.log("\n🧪 gen: generating key and blueprint...");
 		const {
 			key,
@@ -162,10 +158,10 @@ async function reconstructTextGranular(blueprint, keygenKey) {
 			blueprint,
 			indices
 		};
-	}
+}
 
 	// Part 2: Receive
-	async function receive(blueprint, poemMatrix, indices, keyId) {
+async function receive(blueprint, poemMatrix, indices, keyId) {
 		console.log("\n📥 receive: reconstructing key and decoding text...");
 		const {
 			key: reconstructedKey
@@ -175,21 +171,14 @@ async function reconstructTextGranular(blueprint, keygenKey) {
 		console.log("receive: 🧾 Reconstructed Text:\n", reconstructedText);
 
 		return reconstructedText;
-	}
+}
 
-	// Run both
-	const {
-		blueprint,
-		indices
-	} = await gen(sampleText, poemMatrix, keyId);
-	const reconstructedText = await receive(blueprint, poemMatrix, indices, keyId);
-
-	console.log("\n✅ Test Passed:", sampleText === reconstructedText);
-})();
 
 module.exports = {
 	generateKeyWithPoemMatrix,
 	reconstructTextGranular,
 	deriveBlueprintGranular,
-	generatePoemMatrix
+	generatePoemMatrix,
+	gen,
+	receive
 };

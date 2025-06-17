@@ -1,25 +1,20 @@
-const kineticKeys = require('kinetic-keys');
+// Import from local files
+const { generateUniqueID } = require('./utils/GenerateUniqueID');
+const { generatePoemMatrix, gen, receive } = require('./utils/KeyDerivation');
+const { generateUnlockHash, verifyUnlockHash } = require('./utils/UnlockHash');
+const { createVoucher, decryptVoucher } = require('./utils/KineticKeyUtils');
 
 // Debug: Log all available functions
-console.log('Available functions:', Object.keys(kineticKeys));
-
-const {
-    // Unique ID
+console.log('Available functions:', {
     generateUniqueID,
-
-    // Key Derivation
     generatePoemMatrix,
     gen,
     receive,
-
-    // Unlock Hash
     generateUnlockHash,
     verifyUnlockHash,
-
-    // Vouchers
     createVoucher,
     decryptVoucher
-} = kineticKeys;
+});
 
 async function runTests() {
     try {

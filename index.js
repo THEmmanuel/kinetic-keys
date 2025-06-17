@@ -32,8 +32,7 @@ module.exports = {
 	reconstructTextGranular,
 	deriveBlueprintGranular,
 	gen,
-	receive
-	
+	receive,
 
 	// Unlock Hash
 	generateUnlockHash,

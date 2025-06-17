@@ -106,7 +106,7 @@ async function deriveBlueprintGranular(text, keygenKey) {
 	const iv = crypto.randomBytes(12);
 	const assemblerSecret = crypto.randomBytes(16);
 
-	const ivHash = crypto.createHash("sha256").update(iv).digest().slice(0, 16);
+	const ivHash = crypto.createHash("sha256").update(iv).digest().subarray(0, 16);
 	const instructionValue = Buffer.from(assemblerSecret).map((byte, i) => byte ^ ivHash[i]);
 	const encodedInstruction = encodeBase62(instructionValue);
 
@@ -128,7 +128,7 @@ async function reconstructTextGranular(blueprint, keygenKey) {
 	const tag = decodeBase62(encodedTag);
 	const instructionValue = decodeBase62(encodedInstruction);
 
-	const ivHash = crypto.createHash("sha256").update(iv).digest().slice(0, 16);
+	const ivHash = crypto.createHash("sha256").update(iv).digest().subarray(0, 16);
 	const reconstructedAssemblerSecret = Buffer.from(instructionValue).map((byte, i) => byte ^ ivHash[i]);
 
 	try {

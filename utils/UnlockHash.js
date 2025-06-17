@@ -70,8 +70,8 @@ async function generateUnlockHash(passphraseA, passphraseB = null, mode = "singl
 		const xorHash = xorBuffers(hmacA, hmacB);
 
 		const encodedXor = encodeBase62(xorHash).slice(0, 30);
-		const checksumA = encodeBase62(hmacA.slice(0, 3));
-		const checksumB = encodeBase62(hmacB.slice(0, 3));
+		const checksumA = encodeBase62(hmacA.subarray(0, 3));
+		const checksumB = encodeBase62(hmacB.subarray(0, 3));
 
 		return `dual.${salt.toString("hex")}.${encodedXor}.${checksumA}.${checksumB}`;
 	}
@@ -141,33 +141,6 @@ async function verifyUnlockHash(storedUnlockHash, inputPassphrase, mode = "singl
 	const generatedHash = encodeBase62(hmac).slice(0, 15);
 	return generatedHash === storedHash;
 }
-
-
-// Example Usage
-// (async () => {
-// 	const sharedHash = await generateUnlockHash("aliceSecret", "bobSecret", "dual");
-// 	console.log("Generated Dual Unlock Hash:", sharedHash);
-
-// 	const validA = await verifyUnlockHash(sharedHash, "aliceSecret", "dual"); // true
-// 	const validB = await verifyUnlockHash(sharedHash, "bobSecret", "dual"); // true
-// 	const invalid = await verifyUnlockHash(sharedHash, "charlieSecret", "dual"); // false
-
-// 	console.log("Alice valid?", validA);
-// 	console.log("Bob valid?", validB);
-// 	console.log("Charlie valid?", invalid);
-
-
-// 	const passphrase = "mySuperSecurePassword!";
-// 	const passphrase2 = "mySuperSecurePassword!";
-
-// 	// Generate the unlock hash (for storage)
-// 	const unlockHash = await generateUnlockHash(passphrase);
-// 	console.log("Generated Unlock Hashhhhhhh:", unlockHash);
-
-// 	// Verify the user's passphrase (simulate user input)
-// 	const isVerified = await verifyUnlockHash(unlockHash, passphrase2);
-// 	console.log("Is Passphrase Verified?", isVerified);
-// })();
 
 module.exports = {
 	generateUnlockHash,

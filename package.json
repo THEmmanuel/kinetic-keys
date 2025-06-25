@@ -24,7 +24,8 @@
     "demo": "node pqc-demo.js",
     "demo:pqc": "node pqc-demo.js",
     "example": "node examples/quick-start.js",
-    "test:kat": "node simple-kat-test.js"
+    "test:kat": "node simple-kat-test.js",
+    "benchmark": "node benchmark.js"
   },
   "keywords": [
     "cryptography",

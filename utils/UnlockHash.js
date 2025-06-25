@@ -144,5 +144,9 @@ async function verifyUnlockHash(storedUnlockHash, inputPassphrase, mode = "singl
 
 module.exports = {
 	generateUnlockHash,
-	verifyUnlockHash
+	verifyUnlockHash,
+	// Export internal functions for testing
+	base62Decode,
+	xorBuffers,
+	encodeBase62
 };

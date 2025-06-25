@@ -1,4 +1,4 @@
-# @ayxdele/kinetic-keys v2.0.0
+# @ayxdele/kinetic-keys v2.1.1
 
 🚀 **A comprehensive post-quantum cryptography library featuring NIST-standardized algorithms for quantum-resistant security.**
 
@@ -16,7 +16,7 @@ If you find this project helpful, consider supporting its development:
 
 ## 🛡️ Overview
 
-**Kinetic Keys SDK v2.0.0** is a comprehensive cryptographic library that combines a lightweight zero-knowledge framework with cutting-edge **post-quantum cryptography** capabilities. The SDK provides both traditional secure digital transaction features and quantum-resistant security through NIST-standardized algorithms.
+**Kinetic Keys SDK v2.1.1** is a comprehensive cryptographic library that combines a lightweight zero-knowledge framework with cutting-edge **post-quantum cryptography** capabilities. The SDK provides both traditional secure digital transaction features and quantum-resistant security through NIST-standardized algorithms.
 
 ### **Key Features:**
 - 🆔 **Secure ID Generation** - Cryptographically secure unique identifiers
@@ -1215,7 +1215,7 @@ If you find this project helpful, consider supporting its development:
 
 ---
 
-**⚡ Ready to secure your applications against quantum threats with @ayxdele/kinetic-keys v2.0.0!**
+**⚡ Ready to secure your applications against quantum threats with @ayxdele/kinetic-keys v2.1.1!**
 
 *© 2025 Projekt Kinetic. All rights reserved.*
 

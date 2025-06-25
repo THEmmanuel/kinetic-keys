@@ -1,6 +1,6 @@
 {
   "name": "@ayxdele/kinetic-keys",
-  "version": "2.0.7",
+  "version": "2.1.0",
   "description": "A comprehensive post-quantum cryptography library featuring Dilithium digital signatures and Kyber key encapsulation mechanisms. Includes versatile encoding schemes, key derivation utilities, and unique ID generation. Designed for quantum-resistant applications requiring secure key management, metadata handling, and advanced cryptographic operations.",
   "main": "index.js",
   "files": [

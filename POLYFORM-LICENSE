@@ -1,0 +1,22 @@
+Polyform Strict License 1.0.0
+
+Copyright 2025 Emmanuel A. Bello
+
+This software is licensed under the Polyform Strict License 1.0.0.
+
+You may use, modify, and distribute this software for any purpose, including commercial purposes, provided that:
+
+1. You include a copy of this license in any distribution of the software.
+2. You do not use the software to provide a commercial service that competes with the licensor's commercial offerings.
+3. You do not remove or alter any copyright notices or license terms.
+4. You do not use the software in any way that violates applicable laws or regulations.
+
+For the full text of the Polyform Strict License 1.0.0, see: https://polyformproject.org/licenses/strict/1.0.0/
+
+---
+
+Additional Terms for Kinetic Keys:
+
+This software includes implementations of post-quantum cryptographic algorithms (Dilithium and Kyber) that are subject to their respective licenses and patent considerations. Users are responsible for ensuring compliance with all applicable laws and regulations regarding cryptographic software in their jurisdiction.
+
+The software is provided for educational and research purposes. For production use in commercial applications, please ensure compliance with all applicable export controls, cryptographic regulations, and licensing requirements. 

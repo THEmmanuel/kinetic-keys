@@ -2,7 +2,32 @@
 
 All notable changes to @ayxdele/kinetic-keys will be documented in this file.
 
-## [2.0.7] - 2025-01-10
+## [2.2.0] - 2025-01-10
+
+### Changed
+- **MAJOR LICENSING UPDATE**: Migrated from Apache License 2.0 to dual-license model
+- **Business Source License 1.1**: Commercial use requires license or 5% royalty payment
+- **Polyform Strict License 1.0.0**: Prevents competition with licensor's commercial offerings
+- **4-year limitation**: Converts to Apache 2.0 after 2029-01-01
+- **Educational use**: Remains free for educational, research, and development purposes
+
+### Added
+- New license files: `POLYFORM-LICENSE` and `LICENSE-COMMERCIAL`
+- Commercial licensing information and contact details
+- Updated documentation with new licensing terms
+- Contact email: emmayodayo@gmail.com for commercial licensing inquiries
+
+### Updated
+- Package version bumped to 2.2.0
+- README.md updated with new license badge and terms
+- NOTICE file updated to reflect new licensing
+- Package.json license field updated to "BSL-1.1 AND Polyform-Strict-1.0.0"
+
+### Security
+- Provisional patent applications filed for core cryptographic mechanisms
+- Enhanced intellectual property protection for commercial use
+
+## [2.1.1] - 2025-01-10
 
 ### Fixed
 - **CRITICAL PQC VERIFICATION FIX**: Fixed SecureDocumentSystem PQC signature verification

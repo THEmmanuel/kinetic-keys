@@ -1,6 +1,6 @@
 {
   "name": "@ayxdele/kinetic-keys",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "A comprehensive post-quantum cryptography library featuring Dilithium digital signatures and Kyber key encapsulation mechanisms. Includes versatile encoding schemes, key derivation utilities, and unique ID generation. Designed for quantum-resistant applications requiring secure key management, metadata handling, and advanced cryptographic operations.",
   "main": "index.js",
   "files": [
@@ -11,6 +11,8 @@
     "README.md",
     "README-PQC.md",
     "LICENSE",
+    "POLYFORM-LICENSE",
+    "LICENSE-COMMERCIAL",
     "NOTICE"
   ],
   "scripts": {
@@ -41,7 +43,7 @@
     "quantum-resistant"
   ],
   "author": "Emmanuel A. Bello",
-  "license": "Apache-2.0",
+  "license": "BSL-1.1 AND Polyform-Strict-1.0.0",
   "dependencies": {
     "argon2": "^0.41.1",
     "nanoid": "^5.1.5"

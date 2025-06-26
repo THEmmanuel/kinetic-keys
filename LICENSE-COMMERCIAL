@@ -1,0 +1,77 @@
+Commercial License Information for Kinetic Keys
+
+Copyright 2025 Emmanuel A. Bello
+
+This document provides information about commercial licensing for Kinetic Keys.
+
+LICENSE TYPES:
+
+1. BUSINESS SOURCE LICENSE 1.1 (Current)
+   - Duration: Until 2029-01-01
+   - Commercial Use: Requires license or royalty payment
+   - Royalty: 5% of gross revenue from commercial products
+   - Non-commercial: Free for development, testing, research
+
+2. POLYFORM STRICT LICENSE 1.0.0
+   - Commercial Use: Allowed with restrictions
+   - Competition: Cannot compete with licensor's offerings
+   - Attribution: Required in all distributions
+
+3. FUTURE LICENSE (After 2029-01-01)
+   - Converts to: Apache License 2.0
+   - Commercial Use: Free and unrestricted
+   - Open Source: Fully open source
+
+COMMERCIAL USE REQUIREMENTS:
+
+For commercial use of Kinetic Keys, you must either:
+
+A) Purchase a Commercial License
+   - Contact: Emmanuel A. Bello
+   - Email: emmayodayo@gmail.com
+   - Terms: Negotiable based on usage and requirements
+
+B) Pay Royalty Fee
+   - Rate: 5% of gross revenue from products using Kinetic Keys
+   - Payment: Within 30 days of each sale
+   - Reporting: Quarterly revenue reports required
+
+C) Wait for License Conversion
+   - Date: 2029-01-01
+   - Result: Automatic conversion to Apache 2.0
+   - Commercial Use: Free and unrestricted
+
+WHAT CONSTITUTES COMMERCIAL USE:
+
+- Selling software that incorporates Kinetic Keys
+- Providing services that use Kinetic Keys
+- Distributing products that include Kinetic Keys
+- Using Kinetic Keys in commercial applications
+- Generating revenue from Kinetic Keys-based solutions
+
+EXEMPTIONS:
+
+- Educational institutions (free use)
+- Research organizations (free use)
+- Open source projects (free use)
+- Personal projects (free use)
+- Development and testing (free use)
+
+PATENT INFORMATION:
+
+The following mechanisms have provisional patent applications:
+- Unlock hash system
+- Voucher encryption
+- Poem matrix key derivation
+- Receive/Gen mechanisms
+
+For patent licensing inquiries, contact the licensor directly.
+
+CONTACT INFORMATION:
+
+For commercial licensing, patent licensing, or royalty payments:
+- Emmanuel A. Bello
+- Email: emmayodayo@gmail.com
+- Website: https://github.com/THEmmanuel/kinetic-keys
+
+This document is for informational purposes only. The actual license terms are contained in the LICENSE and POLYFORM-LICENSE files. 

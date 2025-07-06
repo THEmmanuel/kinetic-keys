@@ -1,0 +1,47 @@
+# Emscripten Makefile for Kyber1024 WASM compilation
+# Target: Post-quantum key encapsulation for Kinetic Keys
+
+# Emscripten compiler
+EMCC ?= ../../emsdk/upstream/emscripten/emcc
+EMCFLAGS = -O2 -s WASM=1 -s NO_EXIT_RUNTIME=1 \
+           -s ALLOW_MEMORY_GROWTH=1 \
+           -s INITIAL_MEMORY=32MB \
+           -s STACK_SIZE=1MB \
+           -s MODULARIZE=1 \
+           -s EXPORT_NAME="createKyber1024Module" \
+           -s ENVIRONMENT=node \
+           -s EXPORTED_FUNCTIONS='[\"_pqcrystals_kyber1024_ref_keypair\", \"_pqcrystals_kyber1024_ref_enc\", \"_pqcrystals_kyber1024_ref_dec\", \"_malloc\", \"_free\"]' \
+           -s EXPORTED_RUNTIME_METHODS='[\"ccall\", \"cwrap\", \"getValue\", \"setValue\", \"HEAPU8\"]' \
+           -D__EMSCRIPTEN__ \
+           -DKYBER_K=4
+
+# Source files
+SOURCES = src/kem.c \
+          src/indcpa.c \
+          src/polyvec.c \
+          src/poly.c \
+          src/ntt.c \
+          src/cbd.c \
+          src/reduce.c \
+          src/verify.c \
+          src/fips202.c \
+          src/symmetric-shake.c \
+          src/sha256.c \
+          src/sha512.c \
+          src/randombytes.c
+
+# Output files
+OUTPUT = build/kyber1024.js
+
+all: $(OUTPUT)
+
+$(OUTPUT): $(SOURCES)
+	@echo "Building Kyber1024 WASM module..."
+	@mkdir -p build
+	$(EMCC) $(EMCFLAGS) $(SOURCES) -o $(OUTPUT)
+	@echo "Build complete!"
+
+clean:
+	rm -rf build/*.js build/*.wasm
+
+.PHONY: all clean 

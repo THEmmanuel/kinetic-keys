@@ -1,0 +1,127 @@
+# Emscripten Makefile for Dilithium 5 WASM compilation
+# Target: Post-quantum digital signatures for Kinetic Keys
+
+# Emscripten compiler
+EMCC ?= ../../emsdk/upstream/emscripten/emcc
+EMCFLAGS = -O3 -s WASM=1 -s NO_EXIT_RUNTIME=1 \
+           -s ALLOW_MEMORY_GROWTH=1 \
+           -s MAXIMUM_MEMORY=67108864 \
+           -s MODULARIZE=1 \
+           -s EXPORT_NAME="createDilithium5Module" \
+           -s ENVIRONMENT=node \
+           -s EXPORTED_FUNCTIONS='["_crypto_sign_keypair", "_crypto_sign", "_crypto_sign_open", "_crypto_sign_signature", "_crypto_sign_verify", "_malloc", "_free"]' \
+           -s EXPORTED_RUNTIME_METHODS='["ccall", "cwrap", "getValue", "setValue", "writeArrayToMemory", "HEAPU8"]' \
+           -s ASSERTIONS=0 \
+           -s FILESYSTEM=0 \
+           -DDILITHIUM_MODE=5 \
+           -D__EMSCRIPTEN__
+
+# Source files needed for Dilithium 5
+SOURCES = src/sign.c \
+          src/packing.c \
+          src/polyvec.c \
+          src/poly.c \
+          src/ntt.c \
+          src/reduce.c \
+          src/rounding.c \
+          src/fips202.c \
+          src/symmetric-shake.c \
+          src/randombytes.c
+
+# Header files
+HEADERS = src/config.h \
+          src/params.h \
+          src/api.h \
+          src/sign.h \
+          src/packing.h \
+          src/polyvec.h \
+          src/poly.h \
+          src/ntt.h \
+          src/reduce.h \
+          src/rounding.h \
+          src/symmetric.h \
+          src/fips202.h \
+          src/randombytes.h
+
+# Output files
+WASM_OUTPUT = build/dilithium5.wasm
+JS_OUTPUT = build/dilithium5.js
+
+.PHONY: all clean test install
+
+all: $(WASM_OUTPUT)
+
+$(WASM_OUTPUT): $(SOURCES) $(HEADERS)
+	@echo "Building Dilithium 5 WASM module..."
+	@mkdir -p build
+	$(EMCC) $(EMCFLAGS) $(SOURCES) -o $(JS_OUTPUT)
+	@echo "Build complete: $(WASM_OUTPUT)"
+	@echo "JavaScript wrapper: $(JS_OUTPUT)"
+
+# Optimized build for production
+production: EMCFLAGS += -s ASSERTIONS=0 -s SAFE_HEAP=0 --closure 1
+production: $(WASM_OUTPUT)
+
+# Debug build with additional checks
+debug: EMCFLAGS += -s ASSERTIONS=1 -s SAFE_HEAP=1 -s STACK_OVERFLOW_CHECK=1 -g
+debug: $(WASM_OUTPUT)
+
+# Size-optimized build
+size: EMCFLAGS += -Os --closure 1 -s AGGRESSIVE_VARIABLE_ELIMINATION=1
+size: $(WASM_OUTPUT)
+
+# Test build with Node.js
+test: $(WASM_OUTPUT)
+	@echo "Testing WASM module..."
+	@node -e "const dilithium = require('./build/dilithium5.js'); console.log('WASM module loaded successfully');"
+
+# Clean build artifacts
+clean:
+	@echo "Cleaning build artifacts..."
+	@rm -rf build/*
+	@echo "Clean complete"
+
+# Install dependencies (if needed)
+install:
+	@echo "Installing Emscripten dependencies..."
+	@echo "Please ensure Emscripten SDK is installed and activated"
+	@emcc --version || echo "Emscripten not found. Please install: https://emscripten.org/docs/getting_started/downloads.html"
+
+# Show build information
+info:
+	@echo "Dilithium 5 WASM Build Configuration:"
+	@echo "  Compiler: $(EMCC)"
+	@echo "  Flags: $(EMCFLAGS)"
+	@echo "  Sources: $(SOURCES)"
+	@echo "  Output: $(WASM_OUTPUT)"
+	@echo "  Key sizes:"
+	@echo "    Public key: 2592 bytes"
+	@echo "    Secret key: 4880 bytes"
+	@echo "    Signature: 4595 bytes"
+
+# Generate package.json for npm integration
+package:
+	@echo "Generating package.json for WASM module..."
+	@echo '{' > build/package.json
+	@echo '  "name": "@kinetic-keys/dilithium5-wasm",' >> build/package.json
+	@echo '  "version": "1.0.0",' >> build/package.json
+	@echo '  "description": "Dilithium 5 post-quantum signatures compiled to WASM",' >> build/package.json
+	@echo '  "main": "dilithium5.js",' >> build/package.json
+	@echo '  "files": ["dilithium5.js", "dilithium5.wasm"],' >> build/package.json
+	@echo '  "engines": { "node": ">=14.0.0" },' >> build/package.json
+	@echo '  "keywords": ["post-quantum", "cryptography", "dilithium", "wasm"]' >> build/package.json
+	@echo '}' >> build/package.json
+
+# Help target
+help:
+	@echo "Available targets:"
+	@echo "  all        - Build standard WASM module"
+	@echo "  production - Build optimized for production"
+	@echo "  debug      - Build with debug symbols and checks"
+	@echo "  size       - Build optimized for size"
+	@echo "  test       - Test the built WASM module"
+	@echo "  clean      - Remove build artifacts"
+	@echo "  install    - Check/install dependencies"
+	@echo "  info       - Show build configuration"
+	@echo "  package    - Generate package.json"
+	@echo "  help       - Show this help message" 

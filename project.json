@@ -1,0 +1,14 @@
+{
+	"name": "Kinetic Keys v2",
+	"tagline": "A post-quantum cryptographic system/SDK for secure data transmission and storage.",
+	"description": "Kinetic Keys SDK v2 is a comprehensive cryptographic library that combines a lightweight zero-knowledge framework with cutting-edge post-quantum cryptography capabilities. The SDK provides both traditional secure digital transaction features and quantum-resistant security through NIST-standardized algorithms.",
+	"team": [
+	  {
+		"name": "Emmanuel Ayodele Bello",
+		"email": "emmanuelayodele@gmail.com"
+	  }
+	],
+	"demo_url": "https://www.npmjs.com/package/@ayxdele/kinetic-keys",
+	"video_url": "https://www.youtube.com/watch?v=Z5tFpk51pLU&ab_channel=Emmanuel.A",
+	"technologies": ["AES", "Argon2", "Hashing", "ZK", "KAT Protocol", "Post-Quantum Cryptography", "Dilithium", "Kyber"]
+}

@@ -1,9 +1,9 @@
-# @ayxdele/kinetic-keys v2.1.1
+# @ayxdele/kinetic-keys v2.2.0
 
 🚀 **A comprehensive post-quantum cryptography library featuring NIST-standardized algorithms for quantum-resistant security.**
 
 [![npm version](https://badge.fury.io/js/@ayxdele%2Fkinetic-keys.svg)](https://badge.fury.io/js/@ayxdele%2Fkinetic-keys)
-[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![License: BSL-1.1](https://img.shields.io/badge/License-BSL--1.1%20%26%20Polyform%20Strict-blue.svg)](LICENSE)
 [![Node.js](https://img.shields.io/badge/Node.js-14.x%2B-green.svg)](https://nodejs.org/)
 [![Coverage](https://img.shields.io/badge/Coverage-95.34%25-brightgreen)](https://github.com/THEmmanuel/kinetic-keys)
 [![GitHub](https://img.shields.io/badge/GitHub-THEmmanuel%2Fkinetic--keys-blue.svg)](https://github.com/THEmmanuel/kinetic-keys)
@@ -16,7 +16,7 @@ If you find this project helpful, consider supporting its development:
 
 ## 🛡️ Overview
 
-**Kinetic Keys SDK v2.1.1** is a comprehensive cryptographic library that combines a lightweight zero-knowledge framework with cutting-edge **post-quantum cryptography** capabilities. The SDK provides both traditional secure digital transaction features and quantum-resistant security through NIST-standardized algorithms.
+**Kinetic Keys SDK v2.2.0** is a comprehensive cryptographic library that combines a lightweight zero-knowledge framework with cutting-edge **post-quantum cryptography** capabilities. The SDK provides both traditional secure digital transaction features and quantum-resistant security through NIST-standardized algorithms.
 
 ### **Key Features:**
 - 🆔 **Secure ID Generation** - Cryptographically secure unique identifiers
@@ -1180,7 +1180,29 @@ npm run benchmark
 
 ## 📄 License
 
-Apache License 2.0 - see [LICENSE](LICENSE) file for details.
+This project is licensed under the **Business Source License 1.1** and **Polyform Strict License 1.0.0**.
+
+### **Business Source License 1.1**
+- **Use Limitation**: 4 years from first publication (until 2029-01-01)
+- **Commercial Use**: Requires commercial license or royalty payment (5% of gross revenue)
+- **Change Date**: After 2029-01-01, converts to Apache License 2.0
+- **Non-production Use**: Free for development, testing, and research
+
+### **Polyform Strict License 1.0.0**
+- **Commercial Use**: Allowed with restrictions
+- **Competition Clause**: Cannot use to compete with licensor's commercial offerings
+- **Attribution**: Must include license copy in distributions
+- **Compliance**: Must comply with applicable laws and regulations
+
+### **Key Terms**
+- **Educational/Research Use**: Free and unrestricted
+- **Commercial Production Use**: Requires commercial license or royalty payment
+- **Open Source**: Converts to Apache 2.0 after 4 years
+- **Patent Protection**: Provisional patents filed for core cryptographic mechanisms
+
+For complete license terms, see [LICENSE](LICENSE) and [POLYFORM-LICENSE](POLYFORM-LICENSE) files.
+
+For commercial licensing inquiries, contact: emmayodayo@gmail.com
 
 ---
 
@@ -1215,7 +1237,7 @@ If you find this project helpful, consider supporting its development:
 
 ---
 
-**⚡ Ready to secure your applications against quantum threats with @ayxdele/kinetic-keys v2.1.1!**
+**⚡ Ready to secure your applications against quantum threats with @ayxdele/kinetic-keys v2.2.0!**
 
 *© 2025 Projekt Kinetic. All rights reserved.*
 

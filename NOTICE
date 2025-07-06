@@ -1,0 +1,38 @@
+Kinetic Keys SDK v2.1.1
+Copyright 2025 Emmanuel A. Bello
+
+Licensed under Business Source License 1.1 and Polyform Strict License 1.0.0
+
+This product includes software developed by the following third parties:
+
+CRYSTALS-Kyber
+Copyright (c) 2017-2020 Joppe Bos, Léo Ducas, Eike Kiltz, Tancrède Lepoint, 
+Vadim Lyubashevsky, John Schanck, Peter Schwabe, Gregor Seiler, Damien Stehlé
+
+CRYSTALS-Dilithium  
+Copyright (c) 2017-2020 CRYSTALS-Dilithium Team
+
+Both Kyber and Dilithium are released into the public domain and are part of the 
+CRYSTALS (Cryptographic Suite for Algebraic Lattices) family of post-quantum 
+cryptographic algorithms.
+
+For more information:
+- Kyber: https://pq-crystals.org/kyber/
+- Dilithium: https://pq-crystals.org/dilithium/
+
+This product also includes:
+- Keccak and AES implementations (public domain)
+- SHA-2 and SHA-3 implementations (public domain)
+- Argon2 password hashing (Apache 2.0)
+- nanoid unique ID generation (MIT)
+
+---
+
+IMPORTANT LICENSING INFORMATION:
+
+This software is licensed under Business Source License 1.1 and Polyform Strict License 1.0.0.
+Commercial use requires either a commercial license or royalty payment (5% of gross revenue).
+Educational and research use is free and unrestricted.
+After 2029-01-01, the license converts to Apache License 2.0.
+
+For complete license terms, see LICENSE and POLYFORM-LICENSE files. 

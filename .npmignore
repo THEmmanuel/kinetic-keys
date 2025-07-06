@@ -1,0 +1,58 @@
+# NPM Package Exclusions for @ayxdele/kinetic-keys
+
+# Development and Testing
+tests/
+coverage/
+jest.config.js
+.github/
+*.test.js
+test-*.js
+
+# Build and Development Files
+wasm/
+scripts/
+node_modules/
+.gitignore
+
+# Demo and Development Scripts
+pqc-demo.js
+show-kat-results.js
+simple-kat-test.js
+detailed-kat-example.js
+test-kat-validation.js
+test-kk.js
+test-summary.js
+localtestfile.js
+
+# Staging and Testing
+staging-test/
+staging-test-script.js
+readme-example-test.js
+*.tgz
+
+# Large NIST Reference Implementations
+NIST-PQ-Submission-Kyber-20201001/
+dilithium/
+emsdk/
+
+# Documentation (keep only essential)
+README-testing.md
+
+# Package files
+package-lock.json
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db 

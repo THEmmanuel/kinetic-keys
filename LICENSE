@@ -1,0 +1,60 @@
+Business Source License 1.1
+
+Copyright 2025 Emmanuel A. Bello
+
+Licensor: Emmanuel A. Bello
+
+Software: Kinetic Keys (kinetic-keys)
+
+Use Limitation: 4 years from the date of first publication
+
+Additional Use Grant: You may make use of the Licensed Work, provided that you may not use the Licensed Work for a Commercial Use. For purposes of this License, a "Commercial Use" means use of the Licensed Work, alone or in combination with other software, hardware, or services, for any commercial purpose, including, but not limited to, the sale, lease, license, or other transfer of the Licensed Work, or any product or service that incorporates, uses, or is derived from the Licensed Work, to any third party for monetary or other consideration.
+
+Change Date: 2029-01-01
+
+Change License: Apache License, Version 2.0
+
+For the full text of the Business Source License 1.1, see: https://mariadb.com/bsl11/
+
+For the full text of the Apache License, Version 2.0, see: https://www.apache.org/licenses/LICENSE-2.0
+
+---
+
+Business Source License 1.1
+
+Terms
+
+The Licensor hereby grants you the right to copy, modify, create derivative works, redistribute, and make non-production use of the Licensed Work. The Licensor may make an Additional Use Grant, above, permitting limited production use.
+
+Effective on the Change Date, or the fourth anniversary of the first publicly available distribution of a specific version of the Licensed Work under this License, whichever comes first, the Licensor hereby grants you rights under the terms of the Change License, and the rights granted in the paragraph above terminate.
+
+If you use the Licensed Work in a commercial product, you agree to pay the Licensor a royalty fee of 5% of the gross revenue from the sale of such commercial product, payable within 30 days of each sale. The Licensor may waive this royalty fee at their sole discretion.
+
+If your use of the Licensed Work does not comply with the requirements currently in effect as described in this License, you must purchase a commercial license from the Licensor, its authorized resellers, or authorized distributors, or contact the Licensor for additional information.
+
+THE LICENSED WORK IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE LICENSED WORK OR THE USE OR OTHER DEALINGS IN THE LICENSED WORK.
+
+---
+
+Polyform Strict License 1.0.0
+
+Copyright 2025 Emmanuel A. Bello
+
+This software is licensed under the Polyform Strict License 1.0.0.
+
+You may use, modify, and distribute this software for any purpose, including commercial purposes, provided that:
+
+1. You include a copy of this license in any distribution of the software.
+2. You do not use the software to provide a commercial service that competes with the licensor's commercial offerings.
+3. You do not remove or alter any copyright notices or license terms.
+4. You do not use the software in any way that violates applicable laws or regulations.
+
+For the full text of the Polyform Strict License 1.0.0, see: https://polyformproject.org/licenses/strict/1.0.0/
+
+---
+
+Additional Terms for Kinetic Keys:
+
+This software includes implementations of post-quantum cryptographic algorithms (Dilithium and Kyber) that are subject to their respective licenses and patent considerations. Users are responsible for ensuring compliance with all applicable laws and regulations regarding cryptographic software in their jurisdiction.
+
+The software is provided for educational and research purposes. For production use in commercial applications, please ensure compliance with all applicable export controls, cryptographic regulations, and licensing requirements. 

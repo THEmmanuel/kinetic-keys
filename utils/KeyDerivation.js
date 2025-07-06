@@ -71,9 +71,19 @@ function getRandomIndices(matrixLength, count = 8) {
 }
 
 function generateKeyWithPoemMatrix(poemMatrix, indices = null, keyId ) {
+	if (!poemMatrix || poemMatrix.length === 0) {
+		throw new Error('Poem matrix cannot be empty');
+	}
+	
 	if (!indices) {
 		indices = getRandomIndices(poemMatrix.length);
 	}
+	
+	// Validate indices
+	if (indices.some(i => i >= poemMatrix.length || i < 0)) {
+		throw new Error('Invalid indices for poem matrix');
+	}
+	
 	const key = generateKeyFromMatrix(poemMatrix, indices, "", keyId);
 	return {
 		key,

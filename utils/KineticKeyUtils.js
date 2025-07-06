@@ -105,25 +105,6 @@ async function decryptVoucher(voucherCode, passphrase, storedUH, SYSTEM_SECRET_K
 	return originalData;
 }
 
-
-
-// Example Usage
-// (async () => {
-//     const passphrase = "8888";
-//     const storedUH = '3aff1b0d4c037f99e895c77c0866cc20.eP4hijZiLit1hXD';
-//     const voucherData = '100000';
-
-//     // const voucherCode = createVoucher(voucherData, storedUH);
-//     // console.log("Generated Voucher Code:", voucherCode);
-
-//     try {
-//         const decryptedData = await decryptVoucher(voucherCode = 'eyJlbmNyeXB0ZWREYXRhIjoiQ3NkaU9rSXVDekhQQ3hEUTRpN0NRcTE3M0F2R2xLZGRQVFBBUzFFU25kQkJqZmJaMy91Tklqdzd5empCZFhCQjU3RnJhOFJoYzcyQTRCVm1mWDFnalZNdG5rT3A0NmZYam1WNTJOV0xwZkM0Nnl6WEVCTFRYMUgxUlYyUHpkOFBsSmg4TmVmVVpVTWhpVDBmcktDR1l4ZE9PZmpZUExUcmh0YWt0M2ZHbkhTSGpJTkdSbW5ZMWc5SkgzL0NCOWFxaWdZcGl0dmVhYlBkMHgxMFkwb0MrejBrZmY5TnZYMEprS2hGdWZubDFPSVZ3aXpKd0J6c0lsR2RnL3VGTEJyWE9Qdm1lUUFxdVg4NWNtbkdoZ3I2THU5SlBXSG56cU9yMFlhdU5hVnBGeGFVdWc0clROV3JJT0VyT2V2T0pyRFN5NDU4Ry9MRkl3SFdwdkFEODFtY1h4aTM2Q3VJK2hyUTVWN0d1d0FqdnZWTnJuVnlTaHZtcnhQMUxWVzAiLCJzYWx0IjoiTXF5R3pZYlhudUE9IiwiYXV0aFRhZyI6ImxyYjczNE9HSExYR2x4VjEvMTMzd3c9PSIsImVrQXV0aFRhZyI6IlY5SXh0RnpXTkFXK1FwVEpUbG0yVkE9PSIsIml2IjoiS1l4TnpEaVJOaDJ4QWJzNyIsImVrSXYiOiJUV096dVp6dHhidnF6THU2IiwiZW5jcnlwdGVkRUsiOiJvOWhFZCs4WHlzNUZSbU5LbGpMbmxqTWdWMDZlMlZ2THhEbHVqbWtramZ5bHNGT1BWZ1pQd2NIcnQ4ND0ifQ==', passphrase, storedUH);
-//         console.log("Decrypted Voucher Data:", decryptedData);
-//     } catch (error) {
-//         console.error("Decryption Failed:", error.message);
-//     }
-// })();
-
 module.exports = {
 	createVoucher,
 	decryptVoucher

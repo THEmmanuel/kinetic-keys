@@ -1,14 +1,18 @@
-// Use require for Jest compatibility
-const { customAlphabet } = require('nanoid');
+const crypto = require('crypto');
 
-async function generateUID(idLength) {
+function generateUID(idLength) {
 	const alphabet = '@#$%&!ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-	const nanoid = customAlphabet(alphabet, idLength);
-	return nanoid();
+	if (!idLength || idLength <= 0) return '';
+	const bytes = crypto.randomBytes(idLength);
+	let id = '';
+	for (let i = 0; i < idLength; i++) {
+		id += alphabet[bytes[i] % alphabet.length];
+	}
+	return id;
 }
 
 async function generateUniqueID(idLength) {
-	return await generateUID(idLength);
+	return generateUID(idLength);
 }
 
 module.exports = {

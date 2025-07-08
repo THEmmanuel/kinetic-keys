@@ -46,7 +46,7 @@
   "license": "BSL-1.1 AND Polyform-Strict-1.0.0",
   "dependencies": {
     "argon2": "^0.41.1",
-    "nanoid": "^5.1.5"
+    "nanoid": "^4.0.2"
   },
   "directories": {
     "test": "tests"

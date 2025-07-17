@@ -3,8 +3,6 @@ const {
 	verifyUnlockHash
 } = require('./UnlockHash');
 
-// const SYSTEM_SECRET_KEY = "YourStaticSecretKeyHere"; // Replace with a secure key
-
 function generateRandomKey() {
 	return crypto.randomBytes(32); // AES-256 key
 }
